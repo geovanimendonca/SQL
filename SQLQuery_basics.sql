@@ -135,3 +135,9 @@ ORDER BY City asc
 SELECT COUNT(*)
 FROM Production.Product
 WHERE Color = 'red' and ListPrice between 500 and 1000
+
+-- Quantos produtos cadastrados tem a palavra 'road' no nome deles?
+SELECT COUNT(*)
+FROM Production.Product
+WHERE Name like '%road%'
+
