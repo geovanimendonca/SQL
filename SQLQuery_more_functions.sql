@@ -38,8 +38,28 @@ GROUP BY FirstName
 ORDER BY 'Contagem de nomes' desc
 
 -- Média de preço para os produtos que são pratas
-SELECT Color, AVG(ListPrice) AS 'Média de preço (silver)'
+SELECT Color, AVG(ListPrice) AS 'Média de preço '
 FROM Production.Product 
 WHERE Color = 'Silver'
 GROUP BY Color
-ORDER BY 'Média de preço (silver)' asc
+
+-- Quantas pessoas tem o mesmo middlename e agrupar pelo middlename
+SELECT MiddleName, COUNT(MiddleName) as 'Pessoas com esse middle name'
+FROM Person.Person
+GROUP BY MiddleName
+
+-- Em média qual a quantidade que cada produto é vendido na loja
+SELECT ProductID, avg(OrderQty) as 'Média de cada produto é vendido na loja'
+FROM Sales.SalesOrderDetail
+GROUP BY ProductID
+
+-- Qual foram as 10 vendas que no total tiveram os maiores valores de venda (line total) por produto do maior valor para o menor
+SELECT TOP 10 ProductID, SUM(LineTotal) as  'maiores valores de venda'
+FROM Sales.SalesOrderDetail
+GROUP BY ProductID
+ORDER BY 'maiores valores de venda' desc
+
+-- Quantos produtos e qual a quantidade media de produtos temos cadastrados nas nosssas orends de servi~ço (workorder), agrupados por productID
+SELECT ProductID, COUNT(ProductID) as 'contagem', AVG(OrderQty) as 'media quantidade'
+FROM Production.WorkOrder
+GROUP BY ProductID
