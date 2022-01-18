@@ -112,3 +112,26 @@ FROM Person.Person
 WHERE FirstName like '%essa%'
 
 -- Desafios
+-- Quantos produtos temos cadastrado no sistema que custam mais que 1500 dolares?
+SELECT COUNT(ListPrice)
+FROM Production.Product
+WHERE ListPrice > 1500
+
+-- Quantas pessoas temos com o sobrenome que inicia com a letra P?
+SELECT COUNT(*)
+FROM Person.Person
+WHERE LastName like 'p%'
+
+-- Em quantas cidades unicas estão cadastrados nossos clientes?
+SELECT COUNT (DISTINCT(City))
+From person.address
+
+-- Quais são as cidades unicas que temos cadastradas no nosso sistema?
+SELECT DISTINCT City
+From person.address
+ORDER BY City asc
+
+-- Quantos produtos vermelhos tem o preço entre 500 a 1000 dolares?
+SELECT COUNT(*)
+FROM Production.Product
+WHERE Color = 'red' and ListPrice between 500 and 1000
