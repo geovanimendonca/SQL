@@ -107,4 +107,9 @@ FROM Person.Person
 SELECT ProductNumber as 'Número do produto'
 FROM Production.Product
 
---
+-- Sales.SalesOrderDetail UnitPrice 'Preço unitário'
+SELECT UnitPrice as 'Preço unitário'
+FROM Sales.SalesOrderDetail
+
+
+
