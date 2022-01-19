@@ -71,3 +71,40 @@ FROM Person.Person
 GROUP BY FirstName
 HAVING COUNT(FirstName) BETWEEN 2 and 4
 
+SELECT ProductID, SUM(LineTotal) as 'Total'
+FROM Sales.SalesOrderDetail
+GROUP BY ProductID
+HAVING SUM(LineTotal) BETWEEN 162000 and 500000
+
+-- Quais nomes no sistema tem uma ocorrencia maior que 10 vezes porém somente onde o titulo é MR
+SELECT FirstName, COUNT(FirstName) as 'Ocorrencia'
+FROM Person.Person
+WHERE Title = 'Mr.'
+GROUP BY FirstName
+HAVING COUNT(FirstName) > 10
+
+-- Identificar provincias (stateProvinceId) com maior numero de cadastros no sistema, mais que 1000 vezes
+SELECT StateProvinceID, COUNT(StateProvinceID) as 'Provincia vezes registradas'
+FROM Person.Address
+GROUP BY StateProvinceID
+HAVING COUNT(StateProvinceID) > 1000
+
+-- Quais produtos não estão trazendo no mínimo 1 milhão em total de vendas (linetotal)
+SELECT ProductID, SUM(LineTotal) as 'Total de vendas produto'
+FROM Sales.SalesOrderDetail
+GROUP BY ProductID
+HAVING SUM(LineTotal) < 1000000
+
+-- AS renomear coluna, dar nome a select, agregação
+SELECT TOP 100 AVG(ListPrice) as 'Preço médio'
+FROM Production.Product
+
+-- Encontrar o FirstName e LastName e trazer em portugues
+SELECT FirstName as 'Nome', LastName as 'Sobrenome'
+FROM Person.Person
+
+-- ProductNumber da tabela production.product "numero do produto"
+SELECT ProductNumber as 'Número do produto'
+FROM Production.Product
+
+--
