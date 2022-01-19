@@ -63,3 +63,11 @@ ORDER BY 'maiores valores de venda' desc
 SELECT ProductID, COUNT(ProductID) as 'contagem', AVG(OrderQty) as 'media quantidade'
 FROM Production.WorkOrder
 GROUP BY ProductID
+
+-- HAVING usado para junção do group by para filtrar resultados de um agrupamento.
+-- HAVING é aplicado depois do agrupamento, WHERE é aplicado antes do agrupamento
+SELECT FirstName, COUNT(FirstName) as 'quantidade'
+FROM Person.Person
+GROUP BY FirstName
+HAVING COUNT(FirstName) BETWEEN 2 and 4
+
