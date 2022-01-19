@@ -70,3 +70,23 @@ GROUP BY DATEPART(YEAR, DueDate)
 ORDER BY 'Data (Ano)' asc
 
 -- STRING
+SELECT CONCAT(FirstName,' ' ,LastName)
+FROM Person.Person
+
+SELECT UPPER(FirstName) -- LOWER
+FROM Person.Person
+
+SELECT LEN(FirstName)
+FROM Person.Person
+
+SELECT FirstName, SUBSTRING(Firstname, 1, 4)
+FROM Person.Person
+
+SELECT ProductNumber, REPLACE(ProductNumber, '-', '*')
+FROM Production.Product
+
+
+-- Funções matemáticas
+SELECT ROUND(SQRT(LineTotal), 2),SQRT(LineTotal)
+FROM Sales.SalesOrderDetail
+
