@@ -42,4 +42,31 @@ WHERE PC.BusinessEntityID IS NULL
 -- LEFT JOIN : 19972
 
 
--- UNION
+-- UNION -> UNION ALL inclui os duplicados
+SELECT FirstName, Title, MiddleName
+FROM Person.Person
+WHERE Title = 'Mr.'
+UNION 
+SELECT FirstName, Title, MiddleName
+FROM Person.Person
+WHERE MiddleName = 'A'
+
+
+-- DATEPART
+SELECT SalesOrderID, DATEPART(MONTH, OrderDate) as 'Mês'
+FROM Sales.SalesOrderHeader
+
+SELECT AVG(TotalDue) as 'Média', DATEPART(MONTH, OrderDate) as 'Mês'
+FROM Sales.SalesOrderHeader
+GROUP BY DATEPART(MONTH, OrderDate)
+ORDER BY Mês asc
+
+SELECT *
+FROM Purchasing.PurchaseOrderDetail
+
+SELECT SUM(OrderQty) as 'Compras', DATEPART(YEAR, DueDate) as 'Data (Ano)'
+FROM Purchasing.PurchaseOrderDetail
+GROUP BY DATEPART(YEAR, DueDate)
+ORDER BY 'Data (Ano)' asc
+
+-- STRING
